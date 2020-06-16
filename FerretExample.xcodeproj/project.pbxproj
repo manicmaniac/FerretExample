@@ -15,7 +15,24 @@
 		5B9B42EB24990CAF00119B10 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B9B42E924990CAF00119B10 /* LaunchScreen.storyboard */; };
 		5B9B42EE24990CAF00119B10 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9B42ED24990CAF00119B10 /* main.m */; };
 		5B9B42F824990CB000119B10 /* FerretExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9B42F724990CB000119B10 /* FerretExampleTests.m */; };
+		5B9B4330249910CF00119B10 /* hello.clj in Sources */ = {isa = PBXBuildFile; fileRef = 5B9B432F249910CF00119B10 /* hello.clj */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXBuildRule section */
+		5B9B432E2499107D00119B10 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			filePatterns = "*.clj";
+			fileType = pattern.proxy;
+			inputFiles = (
+			);
+			isEditable = 1;
+			outputFiles = (
+				"$(DERIVED_FILE_DIR)/$(INPUT_FILE_BASE).cpp",
+			);
+			script = "ferret/bin/ferret -i \"$INPUT_FILE_PATH\" -o \"$SCRIPT_OUTPUT_FILE_0\"\n";
+		};
+/* End PBXBuildRule section */
 
 /* Begin PBXContainerItemProxy section */
 		5B9B42F424990CB000119B10 /* PBXContainerItemProxy */ = {
@@ -51,6 +68,7 @@
 		5B9B42F724990CB000119B10 /* FerretExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FerretExampleTests.m; sourceTree = "<group>"; };
 		5B9B42F924990CB000119B10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B9B432C2499103600119B10 /* ferret */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ferret; sourceTree = "<group>"; };
+		5B9B432F249910CF00119B10 /* hello.clj */ = {isa = PBXFileReference; lastKnownFileType = text; path = hello.clj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +122,7 @@
 				5B9B42E924990CAF00119B10 /* LaunchScreen.storyboard */,
 				5B9B42EC24990CAF00119B10 /* Info.plist */,
 				5B9B42ED24990CAF00119B10 /* main.m */,
+				5B9B432F249910CF00119B10 /* hello.clj */,
 			);
 			path = FerretExample;
 			sourceTree = "<group>";
@@ -146,6 +165,7 @@
 				5B9B42D624990CAB00119B10 /* Resources */,
 			);
 			buildRules = (
+				5B9B432E2499107D00119B10 /* PBXBuildRule */,
 			);
 			dependencies = (
 				5B9B432B24990F3B00119B10 /* PBXTargetDependency */,
@@ -243,6 +263,7 @@
 				5B9B42DD24990CAB00119B10 /* AppDelegate.m in Sources */,
 				5B9B42EE24990CAF00119B10 /* main.m in Sources */,
 				5B9B42E024990CAB00119B10 /* SceneDelegate.m in Sources */,
+				5B9B4330249910CF00119B10 /* hello.clj in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,6 +425,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					FERRET_DISABLE_STD_MAIN,
+				);
 				INFOPLIST_FILE = FerretExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -420,6 +445,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					FERRET_DISABLE_STD_MAIN,
+				);
 				INFOPLIST_FILE = FerretExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

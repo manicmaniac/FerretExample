@@ -13,9 +13,8 @@
 		5B9B42E624990CAC00119B10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B9B42E424990CAC00119B10 /* Main.storyboard */; };
 		5B9B42E824990CAF00119B10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B9B42E724990CAF00119B10 /* Assets.xcassets */; };
 		5B9B42EB24990CAF00119B10 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B9B42E924990CAF00119B10 /* LaunchScreen.storyboard */; };
-		5B9B42EE24990CAF00119B10 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9B42ED24990CAF00119B10 /* main.m */; };
 		5B9B42F824990CB000119B10 /* FerretExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9B42F724990CB000119B10 /* FerretExampleTests.m */; };
-		5B9B4330249910CF00119B10 /* hello.clj in Sources */ = {isa = PBXBuildFile; fileRef = 5B9B432F249910CF00119B10 /* hello.clj */; };
+		5B9B4330249910CF00119B10 /* Main.clj in Sources */ = {isa = PBXBuildFile; fileRef = 5B9B432F249910CF00119B10 /* Main.clj */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -28,7 +27,7 @@
 			);
 			isEditable = 1;
 			outputFiles = (
-				"$(DERIVED_FILE_DIR)/$(INPUT_FILE_BASE).cpp",
+				"$(DERIVED_FILE_DIR)/$(INPUT_FILE_BASE).mm",
 			);
 			script = "ferret/bin/ferret -i \"$INPUT_FILE_PATH\" -o \"$SCRIPT_OUTPUT_FILE_0\"\n";
 		};
@@ -63,12 +62,11 @@
 		5B9B42E724990CAF00119B10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B9B42EA24990CAF00119B10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5B9B42EC24990CAF00119B10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5B9B42ED24990CAF00119B10 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5B9B42F324990CB000119B10 /* FerretExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FerretExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B9B42F724990CB000119B10 /* FerretExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FerretExampleTests.m; sourceTree = "<group>"; };
 		5B9B42F924990CB000119B10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B9B432C2499103600119B10 /* ferret */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ferret; sourceTree = "<group>"; };
-		5B9B432F249910CF00119B10 /* hello.clj */ = {isa = PBXFileReference; lastKnownFileType = text; path = hello.clj; sourceTree = "<group>"; };
+		5B9B432F249910CF00119B10 /* Main.clj */ = {isa = PBXFileReference; lastKnownFileType = text; path = Main.clj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,8 +119,7 @@
 				5B9B42E724990CAF00119B10 /* Assets.xcassets */,
 				5B9B42E924990CAF00119B10 /* LaunchScreen.storyboard */,
 				5B9B42EC24990CAF00119B10 /* Info.plist */,
-				5B9B42ED24990CAF00119B10 /* main.m */,
-				5B9B432F249910CF00119B10 /* hello.clj */,
+				5B9B432F249910CF00119B10 /* Main.clj */,
 			);
 			path = FerretExample;
 			sourceTree = "<group>";
@@ -261,9 +258,8 @@
 			files = (
 				5B9B42E324990CAB00119B10 /* ViewController.m in Sources */,
 				5B9B42DD24990CAB00119B10 /* AppDelegate.m in Sources */,
-				5B9B42EE24990CAF00119B10 /* main.m in Sources */,
 				5B9B42E024990CAB00119B10 /* SceneDelegate.m in Sources */,
-				5B9B4330249910CF00119B10 /* hello.clj in Sources */,
+				5B9B4330249910CF00119B10 /* Main.clj in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,10 +421,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					FERRET_DISABLE_STD_MAIN,
-				);
 				INFOPLIST_FILE = FerretExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -445,10 +437,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					FERRET_DISABLE_STD_MAIN,
-				);
 				INFOPLIST_FILE = FerretExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

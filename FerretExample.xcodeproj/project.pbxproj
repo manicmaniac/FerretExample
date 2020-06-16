@@ -14,7 +14,7 @@
 		5B9B42E824990CAF00119B10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B9B42E724990CAF00119B10 /* Assets.xcassets */; };
 		5B9B42EB24990CAF00119B10 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B9B42E924990CAF00119B10 /* LaunchScreen.storyboard */; };
 		5B9B42F824990CB000119B10 /* FerretExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9B42F724990CB000119B10 /* FerretExampleTests.m */; };
-		5B9B4330249910CF00119B10 /* Main.clj in Sources */ = {isa = PBXBuildFile; fileRef = 5B9B432F249910CF00119B10 /* Main.clj */; };
+		5B9B4330249910CF00119B10 /* core.clj in Sources */ = {isa = PBXBuildFile; fileRef = 5B9B432F249910CF00119B10 /* core.clj */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -66,7 +66,8 @@
 		5B9B42F724990CB000119B10 /* FerretExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FerretExampleTests.m; sourceTree = "<group>"; };
 		5B9B42F924990CB000119B10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B9B432C2499103600119B10 /* ferret */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ferret; sourceTree = "<group>"; };
-		5B9B432F249910CF00119B10 /* Main.clj */ = {isa = PBXFileReference; lastKnownFileType = text; path = Main.clj; sourceTree = "<group>"; };
+		5B9B432F249910CF00119B10 /* core.clj */ = {isa = PBXFileReference; lastKnownFileType = text; path = core.clj; sourceTree = "<group>"; };
+		5B9B43312499237B00119B10 /* uikit.clj */ = {isa = PBXFileReference; lastKnownFileType = text; path = uikit.clj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,7 +120,8 @@
 				5B9B42E724990CAF00119B10 /* Assets.xcassets */,
 				5B9B42E924990CAF00119B10 /* LaunchScreen.storyboard */,
 				5B9B42EC24990CAF00119B10 /* Info.plist */,
-				5B9B432F249910CF00119B10 /* Main.clj */,
+				5B9B432F249910CF00119B10 /* core.clj */,
+				5B9B43312499237B00119B10 /* uikit.clj */,
 			);
 			path = FerretExample;
 			sourceTree = "<group>";
@@ -259,7 +261,7 @@
 				5B9B42E324990CAB00119B10 /* ViewController.m in Sources */,
 				5B9B42DD24990CAB00119B10 /* AppDelegate.m in Sources */,
 				5B9B42E024990CAB00119B10 /* SceneDelegate.m in Sources */,
-				5B9B4330249910CF00119B10 /* Main.clj in Sources */,
+				5B9B4330249910CF00119B10 /* core.clj in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

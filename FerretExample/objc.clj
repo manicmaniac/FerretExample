@@ -205,10 +205,10 @@
   __result = [o_ object];
   ")
 
-(defn imp-implementation-with-ferret-lambda [arity lambda] "
-      size_t arity_ = number::to<size_t>(arity);
+(defn imp-implementation-with-ferret-lambda [lambda arity] "
       lambda_i *lambda_ = lambda.cast<lambda_i>();
       lambda_->inc_ref();
+      size_t arity_ = number::to<size_t>(arity);
       id (^block_)(id, void *...) = ^(id self_, void *args_...){
           va_list ap;
           va_start(ap, args_);

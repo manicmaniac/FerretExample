@@ -102,7 +102,10 @@
 (defn objc-allocate-class-pair [superclass, name, extra] "
   Class superclass_ = value<Class>::to_value(superclass);
   const char *name_ = string::c_str(string::pack(name));
-  size_t extra_ = number::to<size_t>(extra);
+  size_t extra_ = 0;
+  if (!extra.is_nil()) {
+      extra_ = number::to<size_t>(extra);
+  }
   Class cls_ = objc_allocateClassPair(superclass_, name_, extra_);
   __result = obj<value<Class>>(cls_);
   ")
@@ -240,3 +243,6 @@
       IMP imp_ = imp_implementationWithBlock(block_);
       __result = obj<value<IMP>>(imp_);
   ")
+
+(def *yes* (fnumber->native-int 1))
+(def *no* (fnumber->native-int 0))

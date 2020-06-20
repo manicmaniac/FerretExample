@@ -1,42 +1,43 @@
 (require '[objc :as objc])
 (require '[uikit :as ui])
 
-(let [UIViewController (objc/objc-get-class "UIViewController")
-      ViewController (objc/objc-allocate-class-pair UIViewController "ViewController", 0)]
-  (objc/objc-register-class-pair ViewController)
-  (objc/class-add-method ViewController
-                         "viewDidLoad"
+(doto (-> (objc/objc-get-class "UIViewController")
+          (objc/objc-allocate-class-pair "ViewController"))
+  (objc/objc-register-class-pair)
+  (objc/class-add-method "viewDidLoad"
                          (objc/imp-implementation-with-ferret-lambda
                            (fn [self]
                              (let [view (objc/objc-msg-send self "view")]
-                               (let [UIColor (objc/objc-get-class "UIColor")
-                                     green (objc/objc-msg-send UIColor "systemGrayColor")]
-                                 (objc/objc-msg-send view "setBackgroundColor:" green))
-                               (let [UIImage (objc/objc-get-class "UIImage")
-                                     image (objc/objc-msg-send UIImage "imageNamed:" (objc/fstr->cfstr "ferret.png"))
-                                     UIImageView (objc/objc-get-class "UIImageView")
-                                     imageView (objc/objc-msg-send (objc/objc-msg-send UIImageView "alloc") "initWithImage:" image)]
-                                 (objc/objc-msg-send imageView "setAutoresizingMask:" (objc/fnumber->native-int (bit-or (bit-shift-left 1 1)
-                                                                                                                        (bit-shift-left 1 4))))
-                                 (objc/objc-msg-send imageView "setContentMode:" (objc/fnumber->native-int 1))
+                               (let [color (-> (objc/objc-get-class "UIColor")
+                                               (objc/objc-msg-send "systemGrayColor"))]
+                                 (objc/objc-msg-send view "setBackgroundColor:" color))
+                               (let [image (-> (objc/objc-get-class "UIImage")
+                                               (objc/objc-msg-send "imageNamed:" (objc/fstr->cfstr "ferret.png")))
+                                     imageView (doto (-> (objc/objc-get-class "UIImageView")
+                                                         (objc/objc-msg-send "alloc")
+                                                         (objc/objc-msg-send "initWithImage:" image))
+                                                 (objc/objc-msg-send "setAutoresizingMask:" (objc/fnumber->native-int (bit-or (bit-shift-left 1 1)
+                                                                                                                              (bit-shift-left 1 4))))
+                                                 (objc/objc-msg-send "setContentMode:" (objc/fnumber->native-int 1)))]
                                  (objc/objc-msg-send view "addSubview:" imageView))))
                            1)
                          "@:"))
 
-(let [UIResponder (objc/objc-get-class "UIResponder")
-      AppDelegate (objc/objc-allocate-class-pair UIResponder "AppDelegate", 0)]
-  (objc/objc-register-class-pair AppDelegate)
-  (objc/class-add-method AppDelegate
-                         "application:didFinishLaunchingWithOptions:"
+(doto (-> (objc/objc-get-class "UIResponder")
+          (objc/objc-allocate-class-pair "AppDelegate"))
+  (objc/objc-register-class-pair)
+  (objc/class-add-method "application:didFinishLaunchingWithOptions:" 
                          (objc/imp-implementation-with-ferret-lambda
                            (fn [self application options]
-                             (let [UIWindow (objc/objc-get-class "UIWindow")
-                                   window (objc/objc-msg-send (objc/objc-msg-send UIWindow "alloc") "init")]
-                               (let [ViewController (objc/objc-get-class "ViewController")
-                                     viewController (objc/objc-msg-send (objc/objc-msg-send ViewController "alloc") "init")]
+                             (let [window (-> (objc/objc-get-class "UIWindow")
+                                              (objc/objc-msg-send "alloc")
+                                              (objc/objc-msg-send "init"))]
+                               (let [viewController (-> (objc/objc-get-class "ViewController")
+                                                        (objc/objc-msg-send "alloc")
+                                                        (objc/objc-msg-send "init"))]
                                  (objc/objc-msg-send window "setRootViewController:" viewController))
                                (objc/objc-msg-send window "makeKeyAndVisible"))
-                             true)
+                             objc/*yes*)
                            3)
                          "@:@@"))
 

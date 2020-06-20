@@ -210,15 +210,16 @@
       lambda_->inc_ref();
       size_t arity_ = number::to<size_t>(arity);
       id (^block_)(id, void *...) = ^(id self_, void *args_...){
+          var args = nil();
+          var self = obj<value<void *>>(self_);
+          args = rt::cons(self, args);
           va_list ap;
           va_start(ap, args_);
-          var args = nil();
-          for (size_t i_ = 0; i_ < arity_; i_++) {
+          for (size_t i_ = 1; i_ < arity_; i_++) {
               var arg = obj<value<void *>>(va_arg(ap, void *));
               args = rt::cons(arg, args);
           }
           va_end(ap);
-          var self = obj<value<id>>(self_);
           var object = lambda_->invoke(args);
           return [[[FRTObject alloc] initWithFRTObject:object] autorelease];
       };

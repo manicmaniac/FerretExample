@@ -174,6 +174,20 @@
   __result = obj<string>(s_);
   ")
 
+(defn fnumber->native-int [x] "
+  int x_ = number::to<int>(x);
+  __result = obj<value<int>>(x_);
+  ")
+
+(defn fnumber->cfnumber [x] "
+  double x_ = number::to<double>(x);
+  CFNumberRef cfnumber_ = CFNumberCreate(kCFAllocatorDefault, kCFNumberDoubleType, &x_);
+  __result = obj<value<CFNumberRef>>(cfnumber);
+  ")
+
+(defn cfnumber->fnumber [x] "
+  ")
+
 (native-declare
   "
   @interface FRTObject : NSObject

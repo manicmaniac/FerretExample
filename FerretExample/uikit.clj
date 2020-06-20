@@ -1,3 +1,4 @@
+(native-declare "#define nil NULL")
 (native-declare "#import <UIKit/UIKit.h>")
 (native-declare "#undef nil")
 

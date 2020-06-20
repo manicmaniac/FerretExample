@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		5B670E95249E036000513BB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B670E94249E036000513BB5 /* Assets.xcassets */; };
 		5B9B42EB24990CAF00119B10 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B9B42E924990CAF00119B10 /* LaunchScreen.storyboard */; };
-		5B9B42F824990CB000119B10 /* FerretExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9B42F724990CB000119B10 /* FerretExampleTests.m */; };
 		5B9B4330249910CF00119B10 /* core.clj in Sources */ = {isa = PBXBuildFile; fileRef = 5B9B432F249910CF00119B10 /* core.clj */; };
 		5B9B4337249944C400119B10 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B9B4336249944C400119B10 /* UIKit.framework */; };
 /* End PBXBuildFile section */
@@ -33,13 +32,6 @@
 /* End PBXBuildRule section */
 
 /* Begin PBXContainerItemProxy section */
-		5B9B42F424990CB000119B10 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5B9B42D024990CAB00119B10 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5B9B42D724990CAB00119B10;
-			remoteInfo = FerretExample;
-		};
 		5B9B432A24990F3B00119B10 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5B9B42D024990CAB00119B10 /* Project object */;
@@ -54,9 +46,6 @@
 		5B9B42D824990CAB00119B10 /* FerretExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FerretExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B9B42EA24990CAF00119B10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5B9B42EC24990CAF00119B10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5B9B42F324990CB000119B10 /* FerretExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FerretExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5B9B42F724990CB000119B10 /* FerretExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FerretExampleTests.m; sourceTree = "<group>"; };
-		5B9B42F924990CB000119B10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B9B432C2499103600119B10 /* ferret */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ferret; sourceTree = "<group>"; };
 		5B9B432F249910CF00119B10 /* core.clj */ = {isa = PBXFileReference; lastKnownFileType = text; path = core.clj; sourceTree = "<group>"; };
 		5B9B43312499237B00119B10 /* uikit.clj */ = {isa = PBXFileReference; lastKnownFileType = text; path = uikit.clj; sourceTree = "<group>"; };
@@ -73,13 +62,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5B9B42F024990CB000119B10 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -87,7 +69,6 @@
 			isa = PBXGroup;
 			children = (
 				5B9B42DA24990CAB00119B10 /* FerretExample */,
-				5B9B42F624990CB000119B10 /* FerretExampleTests */,
 				5B9B432C2499103600119B10 /* ferret */,
 				5B9B42D924990CAB00119B10 /* Products */,
 				5B9B4335249944C300119B10 /* Frameworks */,
@@ -98,7 +79,6 @@
 			isa = PBXGroup;
 			children = (
 				5B9B42D824990CAB00119B10 /* FerretExample.app */,
-				5B9B42F324990CB000119B10 /* FerretExampleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -114,15 +94,6 @@
 				5B9B43312499237B00119B10 /* uikit.clj */,
 			);
 			path = FerretExample;
-			sourceTree = "<group>";
-		};
-		5B9B42F624990CB000119B10 /* FerretExampleTests */ = {
-			isa = PBXGroup;
-			children = (
-				5B9B42F724990CB000119B10 /* FerretExampleTests.m */,
-				5B9B42F924990CB000119B10 /* Info.plist */,
-			);
-			path = FerretExampleTests;
 			sourceTree = "<group>";
 		};
 		5B9B4335249944C300119B10 /* Frameworks */ = {
@@ -172,24 +143,6 @@
 			productReference = 5B9B42D824990CAB00119B10 /* FerretExample.app */;
 			productType = "com.apple.product-type.application";
 		};
-		5B9B42F224990CB000119B10 /* FerretExampleTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5B9B42FF24990CB000119B10 /* Build configuration list for PBXNativeTarget "FerretExampleTests" */;
-			buildPhases = (
-				5B9B42EF24990CB000119B10 /* Sources */,
-				5B9B42F024990CB000119B10 /* Frameworks */,
-				5B9B42F124990CB000119B10 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				5B9B42F524990CB000119B10 /* PBXTargetDependency */,
-			);
-			name = FerretExampleTests;
-			productName = FerretExampleTests;
-			productReference = 5B9B42F324990CB000119B10 /* FerretExampleTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -201,10 +154,6 @@
 				TargetAttributes = {
 					5B9B42D724990CAB00119B10 = {
 						CreatedOnToolsVersion = 11.5;
-					};
-					5B9B42F224990CB000119B10 = {
-						CreatedOnToolsVersion = 11.5;
-						TestTargetID = 5B9B42D724990CAB00119B10;
 					};
 					5B9B432524990E4100119B10 = {
 						CreatedOnToolsVersion = 11.5;
@@ -225,7 +174,6 @@
 			projectRoot = "";
 			targets = (
 				5B9B42D724990CAB00119B10 /* FerretExample */,
-				5B9B42F224990CB000119B10 /* FerretExampleTests */,
 				5B9B432524990E4100119B10 /* ferret */,
 			);
 		};
@@ -241,13 +189,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5B9B42F124990CB000119B10 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -259,22 +200,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5B9B42EF24990CB000119B10 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5B9B42F824990CB000119B10 /* FerretExampleTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		5B9B42F524990CB000119B10 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5B9B42D724990CAB00119B10 /* FerretExample */;
-			targetProxy = 5B9B42F424990CB000119B10 /* PBXContainerItemProxy */;
-		};
 		5B9B432B24990F3B00119B10 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5B9B432524990E4100119B10 /* ferret */;
@@ -446,44 +374,6 @@
 			};
 			name = Release;
 		};
-		5B9B430024990CB000119B10 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = FerretExampleTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.github.manicmaniac.FerretExampleTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FerretExample.app/FerretExample";
-			};
-			name = Debug;
-		};
-		5B9B430124990CB000119B10 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = FerretExampleTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.github.manicmaniac.FerretExampleTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FerretExample.app/FerretExample";
-			};
-			name = Release;
-		};
 		5B9B432724990E4100119B10 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -526,15 +416,6 @@
 			buildConfigurations = (
 				5B9B42FD24990CB000119B10 /* Debug */,
 				5B9B42FE24990CB000119B10 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		5B9B42FF24990CB000119B10 /* Build configuration list for PBXNativeTarget "FerretExampleTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5B9B430024990CB000119B10 /* Debug */,
-				5B9B430124990CB000119B10 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

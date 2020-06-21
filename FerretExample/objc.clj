@@ -255,3 +255,10 @@
   (doto (-> (objc-get-class superclass-name)
             (objc-allocate-class-pair class-name))
     (objc-register-class-pair)))
+
+(defn defmethod [cls selector-name types lambda]
+  (class-add-method cls
+                    selector-name
+                    (imp-implementation-with-ferret-lambda lambda
+                                                           (- (count types) 1))
+                    types))

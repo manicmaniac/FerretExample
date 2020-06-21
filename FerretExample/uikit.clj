@@ -13,3 +13,9 @@
     NSString *delegate = @(string::to<std::string>(delegate_class_name).c_str());
     int status = ::UIApplicationMain(argc, (char **)argv, nullptr, delegate);
     return obj<number>(status);")
+
+(def *flexible-width-and-height*
+  "return obj<value<UIViewAutoresizing>>(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);")
+
+(def *scale-aspect-fit*
+  "return obj<value<UIViewContentMode>(UIViewContentModeScaleAspectFit);")

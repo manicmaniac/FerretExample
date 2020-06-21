@@ -1,11 +1,5 @@
 (require 'objc 'uikit)
 
-(def *flexible-width-and-height*
-  (objc/int (bit-or (bit-shift-left 1 1)
-                    (bit-shift-left 1 4))))
-
-(def *scale-aspect-fit* (objc/int 1))
-
 (doto (objc/defclass "ViewController" "UIViewController")
   (objc/defmethod "viewDidLoad" "@:"
     (fn [self]
@@ -17,8 +11,8 @@
                                            (objc/send "initWithImage:" (-> (objc/class-of "UIImage")
                                                                            (objc/send "imageNamed:" (objc/str "ferret.png"))))
                                            (objc/send "autorelease"))
-                                   (objc/send "setAutoresizingMask:" *flexible-width-and-height*)
-                                   (objc/send "setContentMode:" *scale-aspect-fit*)))))))
+                                   (objc/send "setAutoresizingMask:" uikit/*flexible-width-and-height*)
+                                   (objc/send "setContentMode:" uikit/*scale-aspect-fit*)))))))
 
 (doto (objc/defclass "AppDelegate" "UIResponder")
   (objc/defmethod "application:didFinishLaunchingWithOptions:" "@:@@"

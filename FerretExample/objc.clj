@@ -262,3 +262,11 @@
                     (imp-implementation-with-ferret-lambda lambda
                                                            (- (count types) 1))
                     types))
+
+(def send objc-msg-send)
+
+(def class-of objc-get-class)
+
+(def int fnumber->native-int)
+
+(def str fstr->cfstr)

@@ -3,6 +3,7 @@
 (doto (objc/defclass "ViewController" "UIViewController")
   (objc/defmethod "viewDidLoad" "@:"
     (fn [self]
+      (objc/send-super self "viewDidLoad")
       (doto (objc/send self "view")
         (objc/send "setBackgroundColor:" (-> (objc/class-of "UIColor")
                                              (objc/send "systemGrayColor")))

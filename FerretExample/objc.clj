@@ -47,36 +47,37 @@
   }
   ")
 
-(defn objc-msg-send-super [sup _cmd & args] "
-  objc_super *sup_ = pointer::to_pointer<objc_super>(sup);
+(defn objc-msg-send-super [self _cmd & args] "
+  id self_ = value<id>::to_value(self);
+  struct objc_super sup_{self_, class_getSuperclass(object_getClass(self_))};
   SEL _cmd_ = sel_registerName(string::c_str(string::pack(_cmd)));
   switch (rt::count(args)) {
       case 0:
-          return obj<pointer>(objc_msgSendSuper(void *)(sup_, _cmd_));
+          return obj<pointer>(objc_msgSendSuper(void *)(&sup_, _cmd_));
       case 1:
-          return obj<pointer>(objc_msgSendSuper(void *)(sup_, _cmd_,
+          return obj<pointer>(objc_msgSendSuper(void *)(&sup_, _cmd_,
               pointer::to_pointer<void *>(rt::nth(args, 0))
           ));
       case 2:
-          return obj<pointer>(objc_msgSendSuper(void *)(sup_, _cmd_,
+          return obj<pointer>(objc_msgSendSuper(void *)(&sup_, _cmd_,
               pointer::to_pointer<void *>(rt::nth(args, 0)),
               pointer::to_pointer<void *>(rt::nth(args, 1))
           ));
       case 3:
-          return obj<pointer>(objc_msgSendSuper(void *)(sup_, _cmd_,
+          return obj<pointer>(objc_msgSendSuper(void *)(&sup_, _cmd_,
               pointer::to_pointer<void *>(rt::nth(args, 0)),
               pointer::to_pointer<void *>(rt::nth(args, 1)),
               pointer::to_pointer<void *>(rt::nth(args, 2))
           ));
       case 4:
-          return obj<pointer>(objc_msgSendSuper(void *)(sup_, _cmd_,
+          return obj<pointer>(objc_msgSendSuper(void *)(&sup_, _cmd_,
               pointer::to_pointer<void *>(rt::nth(args, 0)),
               pointer::to_pointer<void *>(rt::nth(args, 1)),
               pointer::to_pointer<void *>(rt::nth(args, 2)),
               pointer::to_pointer<void *>(rt::nth(args, 3))
           ));
       case 5:
-          return obj<pointer>(objc_msgSendSuper(void *)(sup_, _cmd_,
+          return obj<pointer>(objc_msgSendSuper(void *)(&sup_, _cmd_,
               pointer::to_pointer<void *>(rt::nth(args, 0)),
               pointer::to_pointer<void *>(rt::nth(args, 1)),
               pointer::to_pointer<void *>(rt::nth(args, 2)),
@@ -264,6 +265,8 @@
                     types))
 
 (def send objc-msg-send)
+
+(def send-super objc-msg-send-super)
 
 (def class-of objc-get-class)
 

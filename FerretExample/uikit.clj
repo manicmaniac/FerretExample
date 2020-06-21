@@ -12,4 +12,4 @@
     const char **argv = reinterpret_cast<const char **>(char_pointers.data());
     NSString *delegate = @(string::to<std::string>(delegate_class_name).c_str());
     int status = ::UIApplicationMain(argc, (char **)argv, nullptr, delegate);
-    __result = obj<number>(status);")
+    return obj<number>(status);")

@@ -96,7 +96,7 @@
 (defn objc-get-class [name] "
   const char *name_ = string::c_str(string::pack(name));
   Class cls_ = objc_getClass(name_);
-  __result = obj<value<Class>>(cls_);
+  return obj<value<Class>>(cls_);
   ")
 
 (defn objc-allocate-class-pair [superclass, name, extra] "
@@ -107,7 +107,7 @@
       extra_ = number::to<size_t>(extra);
   }
   Class cls_ = objc_allocateClassPair(superclass_, name_, extra_);
-  __result = obj<value<Class>>(cls_);
+  return obj<value<Class>>(cls_);
   ")
 
 (defn objc-register-class-pair [cls] "
@@ -118,13 +118,13 @@
 (defn class-get-name [cls] "
   Class cls_ = value<Class>::to_value(cls);
   const char *name_ = class_getName(cls_);
-  __result = obj<string>(name_);
+  return obj<string>(name_);
   ")
 
 (defn class-get-super-class [cls] "
   Class cls_ = value<Class>::to_value(cls);
   Class superclass_ = class_getSuperclass(cls_);
-  __result = obj<value<Class>>(superclass_);
+  return obj<value<Class>>(superclass_);
   ")
 
 (defn class-add-method [cls name imp types] "
@@ -134,7 +134,7 @@
   IMP imp_ = value<IMP>::to_value(imp);
   const char *types_ = string::c_str(string::pack(types));
   BOOL success_ = class_addMethod(cls_, selector_, imp_, types_);
-  __result = obj<boolean>(success_);
+  return obj<boolean>(success_);
   ")
 
 (defn object-get-instance-variable [object name] "
@@ -144,7 +144,7 @@
   Ivar ivar_ = object_getInstanceVariable(object_, name_, &v_);
   var v = obj<pointer>(v_);
   var ivar = obj<value<Ivar>>(ivar_);
-  __result = rt::cons(ivar, v);
+  return rt::cons(ivar, v);
   ")
 
 (defn object-set-instance-variable [object name v] "
@@ -152,40 +152,40 @@
   const char *name_ = string::c_str(string::pack(name));
   void *v_ = value<void *>::to_value(v);
   Ivar ivar_ = object_setInstanceVariable(object_, name_, v_);
-  __result = obj<value<Ivar>>(ivar_);
+  return obj<value<Ivar>>(ivar_);
   ")
 
 (defn fstr->cfstr [s] "
   const char *s_ = string::c_str(string::pack(s));
   CFStringRef cfstring_ = CFStringCreateWithCString(kCFAllocatorDefault, s_, kCFStringEncodingUTF8);
-  __result = obj<value<CFStringRef>>(cfstring_);
+  return obj<value<CFStringRef>>(cfstring_);
   ")
 
 (defn cfstr->fstr [s] "
   CFStringRef s_ = value<CFStringRef>::to_value(s);
   const char *cstring_ = CFStringGetCStringPtr(s_, kCFStringEncodingUTF8);
-  __result = obj<string>(cstring_);
+  return obj<string>(cstring_);
   ")
 
 (defn fstr->cstr [s] "
   const char *s_ = string::c_str(string::pack(s));
-  __result = obj<value<const char *>>(s_);
+  return obj<value<const char *>>(s_);
   ")
 
 (defn cstr->fstr [s] "
   const char *s_ = value<const char *>::to_value(s);
-  __result = obj<string>(s_);
+  return obj<string>(s_);
   ")
 
 (defn fnumber->native-int [x] "
   int x_ = number::to<int>(x);
-  __result = obj<value<int>>(x_);
+  return obj<value<int>>(x_);
   ")
 
 (defn fnumber->cfnumber [x] "
   double x_ = number::to<double>(x);
   CFNumberRef cfnumber_ = CFNumberCreate(kCFAllocatorDefault, kCFNumberDoubleType, &x_);
-  __result = obj<value<CFNumberRef>>(cfnumber);
+  return obj<value<CFNumberRef>>(cfnumber);
   ")
 
 (defn cfnumber->fnumber [x] "
@@ -219,7 +219,7 @@
 
 (defn object->var [o] "
   FRTObject *o_ = value<FRTObject *>::to_value(o);
-  __result = [o_ object];
+  return [o_ object];
   ")
 
 (defn imp-implementation-with-ferret-lambda [lambda arity] "
@@ -241,7 +241,7 @@
           return [[[FRTObject alloc] initWithFRTObject:object] autorelease];
       };
       IMP imp_ = imp_implementationWithBlock(block_);
-      __result = obj<value<IMP>>(imp_);
+      return obj<value<IMP>>(imp_);
   ")
 
 (def *yes* (fnumber->native-int 1))

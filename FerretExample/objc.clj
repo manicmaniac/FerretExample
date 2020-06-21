@@ -270,3 +270,11 @@
 (def int fnumber->native-int)
 
 (def str fstr->cfstr)
+
+(defmacro autoreleasepool [& body]
+  `(let [pool (-> (objc-get-class "NSAutoreleasePool")
+                  (objc-msg-send "alloc")
+                  (objc-msg-send "init"))]
+     ~@body
+     (objc-msg-send pool "drain")
+     (objc-msg-send pool "release")))

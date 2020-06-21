@@ -33,9 +33,5 @@
         (objc/send "makeKeyAndVisible"))
       objc/*yes*)))
 
-(let pool [(-> (objc/class-of "NSAutoreleasePool")
-               (objc/send "alloc")
-               (objc/send "init"))]
-  (uikit/uiapplication-main *command-line-args* "AppDelegate")
-  (objc/send pool "drain")
-  (objc/send pool "release"))
+(objc/autoreleasepool
+  (uikit/uiapplication-main *command-line-args* "AppDelegate"))

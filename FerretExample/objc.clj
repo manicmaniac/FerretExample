@@ -246,3 +246,12 @@
 
 (def *yes* (fnumber->native-int 1))
 (def *no* (fnumber->native-int 0))
+
+
+;;; Helper functions
+
+
+(defn defclass [class-name superclass-name]
+  (doto (-> (objc-get-class superclass-name)
+            (objc-allocate-class-pair class-name))
+    (objc-register-class-pair)))

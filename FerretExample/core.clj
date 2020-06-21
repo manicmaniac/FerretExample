@@ -1,8 +1,6 @@
 (require 'objc 'uikit)
 
-(doto (-> (objc/objc-get-class "UIViewController")
-          (objc/objc-allocate-class-pair "ViewController"))
-  (objc/objc-register-class-pair)
+(doto (objc/defclass "ViewController" "UIViewController")
   (objc/class-add-method "viewDidLoad"
                          (objc/imp-implementation-with-ferret-lambda
                            (fn [self]
@@ -22,9 +20,7 @@
                            1)
                          "@:"))
 
-(doto (-> (objc/objc-get-class "UIResponder")
-          (objc/objc-allocate-class-pair "AppDelegate"))
-  (objc/objc-register-class-pair)
+(doto (objc/defclass "AppDelegate" "UIResponder")
   (objc/class-add-method "application:didFinishLaunchingWithOptions:" 
                          (objc/imp-implementation-with-ferret-lambda
                            (fn [self application options]

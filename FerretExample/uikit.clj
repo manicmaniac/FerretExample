@@ -2,7 +2,7 @@
 (native-declare "#import <UIKit/UIKit.h>")
 (native-declare "#undef nil")
 
-(defn application-main [args delegate-class-name] "
+(defn uiapplication-main [args delegate-class-name] "
     std::vector<const char *> char_pointers{};
     for (auto& arg : sequence::to<std_vector>(args)) {
         const char *s = string::to<std::string>(arg).c_str();

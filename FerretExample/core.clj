@@ -1,5 +1,4 @@
-(require '[objc :as objc])
-(require '[uikit :as ui])
+(require 'objc 'uikit)
 
 (doto (-> (objc/objc-get-class "UIViewController")
           (objc/objc-allocate-class-pair "ViewController"))
@@ -41,4 +40,4 @@
                            3)
                          "@:@@"))
 
-(ui/application-main *command-line-args* "AppDelegate")
+(uikit/uiapplication-main *command-line-args* "AppDelegate")

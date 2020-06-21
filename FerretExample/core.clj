@@ -15,7 +15,8 @@
         (objc/send "addSubview:" (doto (-> (objc/class-of "UIImageView")
                                            (objc/send "alloc")
                                            (objc/send "initWithImage:" (-> (objc/class-of "UIImage")
-                                                                           (objc/send "imageNamed:" (objc/str "ferret.png")))))
+                                                                           (objc/send "imageNamed:" (objc/str "ferret.png"))))
+                                           (objc/send "autorelease"))
                                    (objc/send "setAutoresizingMask:" *flexible-width-and-height*)
                                    (objc/send "setContentMode:" *scale-aspect-fit*)))))))
 
@@ -27,8 +28,14 @@
                 (objc/send "init"))
         (objc/send "setRootViewController:" (-> (objc/class-of "ViewController")
                                                 (objc/send "alloc")
-                                                (objc/send "init")))
+                                                (objc/send "init")
+                                                (objc/send "autorelease")))
         (objc/send "makeKeyAndVisible"))
       objc/*yes*)))
 
-(uikit/uiapplication-main *command-line-args* "AppDelegate")
+(let pool [(-> (objc/class-of "NSAutoreleasePool")
+               (objc/send "alloc")
+               (objc/send "init"))]
+  (uikit/uiapplication-main *command-line-args* "AppDelegate")
+  (objc/send pool "drain")
+  (objc/send pool "release"))

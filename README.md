@@ -12,6 +12,7 @@ Since the project includes Ferret languages compiler as Git submodule, you need 
 
 - Xcode 11.5
 - Emacs (>= 24.5)
+- Java
 - Leiningen
 
 You can install Emacs and Leiningen through Homebrew.
